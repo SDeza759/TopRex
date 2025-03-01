@@ -10,6 +10,7 @@ import SwiftUI
 import FirebaseAuth
 
 struct LoginView: View {
+    @EnvironmentObject var authViewModel: AuthViewModel
     @State private var email = ""
     @State private var password = ""
     @State private var errorMessage = ""
@@ -57,12 +58,7 @@ struct LoginView: View {
     }
 
     func logIn() {
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if let error = error {
-                errorMessage = error.localizedDescription
-            } else {
-                isLoggedIn = true
-            }
-        }
+        print("DEBUG: Login button tapped")
+        authViewModel.signIn(email: email, password: password)
     }
 }

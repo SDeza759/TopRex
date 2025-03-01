@@ -24,6 +24,7 @@ class AuthViewModel: ObservableObject {
     }
 
     func signIn(email: String, password: String) {
+        print("DEBUG: signIn() called with email: \(email)")
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if let error = error {
                 print("DEBUG: Sign-in failed - \(error.localizedDescription)") // ✅ Debugging print
