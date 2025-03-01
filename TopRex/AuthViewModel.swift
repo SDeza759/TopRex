@@ -13,7 +13,7 @@ class AuthViewModel: ObservableObject {
     @Published var isLoggedIn: Bool = Auth.auth().currentUser != nil
     
     init() {
-        checkAuthState() // ✅ Ensure we verify auth state properly
+        checkAuthState()
     }
     
     func checkAuthState() {
