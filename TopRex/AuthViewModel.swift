@@ -11,9 +11,16 @@ import SwiftUI
 
 class AuthViewModel: ObservableObject {
     @Published var isLoggedIn: Bool = Auth.auth().currentUser != nil
+    
     init() {
-        self.isLoggedIn = Auth.auth().currentUser != nil
-        print("DEBUG: Initial Auth State - isLoggedIn: \(isLoggedIn)")
+        checkAuthState() // ✅ Ensure we verify auth state properly
+    }
+    
+    func checkAuthState() {
+        DispatchQueue.main.async {
+            self.isLoggedIn = Auth.auth().currentUser != nil
+            print("DEBUG: Checked auth state - isLoggedIn: \(self.isLoggedIn)") // ✅ Debugging print
+        }
     }
 
     func signOut() {
