@@ -24,12 +24,22 @@ struct TopRexApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if authViewModel.isLoggedIn {
-                HomeView()
-                    .environmentObject(authViewModel)
-            } else {
-                ContentView()
-                    .environmentObject(authViewModel)
+            NavigationView {
+                Group {
+                    if authViewModel.isLoggedIn {
+                        HomeView()
+                            .environmentObject(authViewModel)
+                            .onAppear { // ✅ Debugging prints
+                                print("DEBUG: Showing HomeView")
+                            }
+                    } else {
+                        ContentView()
+                            .environmentObject(authViewModel)
+                            .onAppear { // ✅ Debugging prints
+                                print("DEBUG: Showing ContentView")
+                            }
+                    }
+                }
             }
         }
     }
