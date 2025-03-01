@@ -15,7 +15,9 @@ class AuthViewModel: ObservableObject {
     func signOut() {
         do {
             try Auth.auth().signOut()
-            isLoggedIn = false
+            DispatchQueue.main.async {
+                self.isLoggedIn = false
+            }
         } catch {
             print("Error signing out: \(error.localizedDescription)")
         }
