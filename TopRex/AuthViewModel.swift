@@ -6,20 +6,33 @@
 //
 
 
-import FirebaseAuth
 import SwiftUI
+import FirebaseAuth
 
 class AuthViewModel: ObservableObject {
-    @Published var isLoggedIn: Bool = Auth.auth().currentUser != nil
-    
+    @Published var isLoggedIn: Bool = false
+
     init() {
-        checkAuthState()
+        checkAuthState() // ✅ Ensure auth state is checked at launch
     }
-    
+
     func checkAuthState() {
         DispatchQueue.main.async {
             self.isLoggedIn = Auth.auth().currentUser != nil
-            print("DEBUG: Checked auth state - isLoggedIn: \(self.isLoggedIn)") // ✅ Debugging print
+            print("DEBUG: Checked auth state - isLoggedIn: \(self.isLoggedIn)") // ✅ Debug message
+        }
+    }
+
+    func signIn(email: String, password: String) {
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print("DEBUG: Sign-in failed - \(error.localizedDescription)") // ✅ Debugging print
+            } else {
+                DispatchQueue.main.async {
+                    self.isLoggedIn = true
+                    print("DEBUG: User signed in. isLoggedIn is now \(self.isLoggedIn)") // ✅ Debug message
+                }
+            }
         }
     }
 
@@ -28,10 +41,10 @@ class AuthViewModel: ObservableObject {
             try Auth.auth().signOut()
             DispatchQueue.main.async {
                 self.isLoggedIn = false
-                print("DEBUG: User signed out. isLoggedIn is now \(self.isLoggedIn)")
+                print("DEBUG: User signed out. isLoggedIn is now \(self.isLoggedIn)") // ✅ Debugging print
             }
         } catch {
-            print("Error signing out: \(error.localizedDescription)")
+            print("DEBUG: Error signing out: \(error.localizedDescription)") // ✅ Debug message
         }
     }
 }
