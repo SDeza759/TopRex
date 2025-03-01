@@ -22,7 +22,7 @@ struct ContentView: View {
                     Text("TRex")
                         .font(.system(size: 48, weight: .bold))
                         .foregroundColor(.white)
-                        .padding(.bottom, 200)
+                        .padding(.bottom, 100)
 
                     // Authentication Buttons
                     VStack(spacing: 12) {
