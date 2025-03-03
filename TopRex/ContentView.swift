@@ -19,7 +19,7 @@ struct ContentView: View {
                     Spacer()
 
                     // Large "TRex" Text in the Center
-                    Text("TRex")
+                    Text("T-Rex")
                         .font(.system(size: 48, weight: .bold))
                         .foregroundColor(.white)
                         .padding(.bottom, 200)
@@ -105,8 +105,4 @@ struct SignInButton: View {
             .padding(.horizontal, 40)
         }
     }
-}
-
-#Preview {
-    ContentView()
 }

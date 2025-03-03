@@ -11,29 +11,40 @@ import FirebaseAuth
 
 struct HomeView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
+    
     var body: some View {
         VStack {
-            Text("Welcome to TopRex!")
+            Text("Welcome to T-Rex!")
                 .font(.largeTitle)
                 .bold()
                 .padding()
             
-            Text("Start exploring the top recommendations.")
+            Text("What can we recommend today?")
                 .padding()
             
-            Button(action: {
-                authViewModel.signOut()
-            }) {
-                Text("Log Out")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.red)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-                    .padding(.horizontal, 40)
-            }
+            Spacer()
+            
+            /*Button(action: {
+             authViewModel.signOut()
+             }) {
+             Text("Log Out")
+             .font(.headline)
+             .frame(maxWidth: .infinity)
+             .padding()
+             .background(Color.red)
+             .foregroundColor(.white)
+             .cornerRadius(10)
+             .padding(.horizontal, 40)
+             }*/
         }
+        .navigationTitle("Home")
+        .navigationBarItems(trailing:
+                                NavigationLink(destination: SettingsView()) {
+            Image(systemName: "gearshape.fill")
+                .font(.title)
+                .foregroundColor(.blue)
+        }
+        )
     }
 
     func signOut() {
