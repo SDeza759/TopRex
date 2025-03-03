@@ -47,12 +47,12 @@ struct HomeView: View {
         )
     }
 
-    func signOut() {
+    /*func signOut() {
         do {
             try Auth.auth().signOut()
             // Handle logout (navigate back to login)
         } catch {
             print("Error signing out: \(error.localizedDescription)")
         }
-    }
+    }*/
 }
