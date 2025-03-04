@@ -24,18 +24,20 @@ struct TopRexApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                Group {
-                    if authViewModel.isLoggedIn {
+            Group {
+                if authViewModel.isLoggedIn {
+                    NavigationView { // ✅ Ensure navigation is inside Group
                         HomeView()
                             .environmentObject(authViewModel)
-                            .onAppear { // ✅ Debugging prints
+                            .onAppear {
                                 print("DEBUG: Showing HomeView")
                             }
-                    } else {
+                    }
+                } else {
+                    NavigationView { // ✅ Ensure navigation works in both states
                         ContentView()
                             .environmentObject(authViewModel)
-                            .onAppear { // ✅ Debugging prints
+                            .onAppear {
                                 print("DEBUG: Showing ContentView")
                             }
                     }

@@ -39,11 +39,11 @@ struct HomeView: View {
         }
         .navigationTitle("Home")
         .navigationBarItems(trailing:
-                                NavigationLink(destination: SettingsView()) {
-            Image(systemName: "gearshape.fill")
-                .font(.title)
-                .foregroundColor(.blue)
-        }
+                    NavigationLink(destination: SettingsView().environmentObject(authViewModel)) { // ✅ Pass environment explicitly
+                        Image(systemName: "gearshape.fill")
+                            .font(.title)
+                            .foregroundColor(.blue)
+                    }
         )
     }
 
