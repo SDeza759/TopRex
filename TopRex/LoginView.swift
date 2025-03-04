@@ -56,7 +56,7 @@ struct LoginView: View {
                 }
                 .padding()
                 .fullScreenCover(isPresented: $isLoggedIn) {
-                 HomeView() // Navigate to home screen after login
+                 HomeView().environmentObject(authViewModel) // Navigate to home screen after login
                  }
             }
             .ignoresSafeArea(.keyboard, edges: .bottom)

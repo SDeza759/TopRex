@@ -23,19 +23,6 @@ struct HomeView: View {
                 .padding()
             
             Spacer()
-            
-            /*Button(action: {
-             authViewModel.signOut()
-             }) {
-             Text("Log Out")
-             .font(.headline)
-             .frame(maxWidth: .infinity)
-             .padding()
-             .background(Color.red)
-             .foregroundColor(.white)
-             .cornerRadius(10)
-             .padding(.horizontal, 40)
-             }*/
         }
         .navigationTitle("Home")
         .navigationBarItems(trailing:

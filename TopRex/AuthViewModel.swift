@@ -17,6 +17,7 @@ class AuthViewModel: ObservableObject {
     
     init() {
         checkAuthState() // ✅ Ensure auth state is checked at launch
+        print("DEBUG: AuthViewModel initialized")
     }
     
     func checkAuthState() {
