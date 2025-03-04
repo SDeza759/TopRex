@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -33,7 +35,7 @@ struct ContentView: View {
                         SignInButton(title: "Continue with Google", imageName: "google_logo", backgroundColor: Color(UIColor.darkGray), textColor: .white)
 
                         // Sign Up Button
-                        NavigationLink(destination: SignUpView()) {
+                        NavigationLink(destination: SignUpView().environmentObject(authViewModel)) {
                             Text("Sign up")
                                 .font(.headline)
                                 .frame(maxWidth: .infinity)
@@ -45,7 +47,7 @@ struct ContentView: View {
                         }
 
                         // Log In Button (with outline)
-                        NavigationLink(destination: LoginView()) {
+                        NavigationLink(destination: LoginView().environmentObject(authViewModel)) {
                             Text("Log in")
                                 .font(.headline)
                                 .frame(maxWidth: .infinity)

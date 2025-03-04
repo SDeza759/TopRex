@@ -19,7 +19,6 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                
                 VStack {
                     Text("Log In")
                         .font(.largeTitle)
@@ -55,12 +54,9 @@ struct LoginView: View {
                     //Spacer()
                 }
                 .padding()
-                .fullScreenCover(isPresented: $isLoggedIn) {
-                 HomeView().environmentObject(authViewModel) // Navigate to home screen after login
-                 }
             }
             .ignoresSafeArea(.keyboard, edges: .bottom)
-            navigationTitle("Log In")
+            .navigationTitle("Log In")
         }
     }
 
